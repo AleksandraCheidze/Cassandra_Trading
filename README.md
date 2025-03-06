@@ -48,6 +48,79 @@ Cassandra Trading is a secure and efficient crypto trading platform that provide
 ## **Additional Features**
 ✅**Portfolio Analytics**: Gain insights into portfolio to monitor investments and track performance  
 
+## API Endpoints
 
+### Authentication
+| Method | Endpoint | Description |
+|--------|---------|-------------|
+| POST | `/auth/signup` | Register a new user |
+| POST | `/auth/signin` | Login user |
+| POST | `/auth/two-factor/enable` | Enable 2FA |
+| POST | `/auth/two-factor/otp/{otp}` | Verify sign-in OTP |
 
- 
+### Assets
+| Method | Endpoint | Description |
+|--------|---------|-------------|
+| GET | `/api/asset/{assetId}` | Get asset by ID |
+| GET | `/api/asset/coin/{coinId}/user` | Get asset by user and coin ID |
+| GET | `/api/asset` | Get all assets for user |
+
+### Orders
+| Method | Endpoint | Description |
+|--------|---------|-------------|
+| POST | `/api/orders/pay` | Process order payment |
+| GET | `/api/orders/{orderId}` | Get order by ID |
+| GET | `/api/orders` | Get all orders for user |
+
+### Payments
+| Method | Endpoint | Description |
+|--------|---------|-------------|
+| POST | `/api/payment/{paymentMethod}/amount/{amount}` | Handle payment via PayPal/Stripe |
+| POST | `/api/payment/add-details` | Add payment details |
+| GET | `/api/payment/get-details` | Get user payment details |
+
+### Withdrawals
+| Method | Endpoint | Description |
+|--------|---------|-------------|
+| POST | `/api/withdrawal/{amount}` | Request withdrawal |
+| PATCH | `/api/admin/withdrawal/{id}/proceed/{accept}` | Proceed withdrawal (Admin only) |
+| GET | `/api/withdrawal` | Get withdrawal history |
+| GET | `/api/admin/withdrawal` | Get all withdrawal requests (Admin only) |
+
+### User Profile & Watchlist
+| Method | Endpoint | Description |
+|--------|---------|-------------|
+| GET | `/api/users/profile` | Get user profile |
+| POST | `/api/watchlist/create` | Create watchlist |
+| PATCH | `/api/watchlist/add/coin/{coinId}` | Add item to watchlist |
+| GET | `/api/watchlist/{watchlistId}` | Get watchlist by ID |
+
+🔹 Installation & Setup
+
+1️⃣ Prerequisites
+
+Make sure you have the following installed:
+
+Java 17+
+
+MySQL
+
+Maven
+
+2️⃣ Database Setup
+
+Create the database in MySQL:
+CREATE DATABASE cassandra_trading;
+git clone https://github.com/username/Cassandra_Trading.git
+cd CassandraTrading-Backend
+
+4️⃣ Configure Environment Variables
+Set up the application.properties file:
+spring.datasource.url=jdbc:mysql://localhost:3306/cassandra_trading
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+jwt.secret=your_secret_key
+
+5️⃣ Run the Application
+mvn spring-boot:run
+The backend will start running on http://localhost:8080
