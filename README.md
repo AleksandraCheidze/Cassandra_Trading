@@ -134,3 +134,7 @@ jwt.secret=your_secret_key
 mvn spring-boot:run
 
 The backend will start running on http://localhost:8080
+
+## 📑 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
