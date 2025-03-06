@@ -95,6 +95,14 @@ Cassandra Trading is a secure and efficient crypto trading platform that provide
 | PATCH | `/api/watchlist/add/coin/{coinId}` | Add item to watchlist |
 | GET | `/api/watchlist/{watchlistId}` | Get watchlist by ID |
 
+## 🚧 Future Improvements
+
+Frontend Development: Integration of the frontend with the backend for a complete user experience
+
+Testing & Quality Assurance: Addition of unit and integration tests to ensure the platform's reliability
+
+AI Chatbot Integration: Implementation of an AI-powered chatbot for real-time user assistance
+
 ## 🔹 Installation & Setup
 
 1️⃣ Prerequisites
