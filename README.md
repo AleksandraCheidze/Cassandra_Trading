@@ -48,7 +48,7 @@ Cassandra Trading is a secure and efficient crypto trading platform that provide
 ## **Additional Features**
 ✅**Portfolio Analytics**: Gain insights into portfolio to monitor investments and track performance  
 
-## API Endpoints
+## 📌 API Endpoints
 
 ### Authentication
 | Method | Endpoint | Description |
@@ -95,7 +95,7 @@ Cassandra Trading is a secure and efficient crypto trading platform that provide
 | PATCH | `/api/watchlist/add/coin/{coinId}` | Add item to watchlist |
 | GET | `/api/watchlist/{watchlistId}` | Get watchlist by ID |
 
-🔹 Installation & Setup
+## 🔹 Installation & Setup
 
 1️⃣ Prerequisites
 
@@ -110,17 +110,27 @@ Maven
 2️⃣ Database Setup
 
 Create the database in MySQL:
+
 CREATE DATABASE cassandra_trading;
+
 git clone https://github.com/username/Cassandra_Trading.git
+
 cd CassandraTrading-Backend
 
 4️⃣ Configure Environment Variables
+
 Set up the application.properties file:
+
 spring.datasource.url=jdbc:mysql://localhost:3306/cassandra_trading
+
 spring.datasource.username=your_username
+
 spring.datasource.password=your_password
+
 jwt.secret=your_secret_key
 
 5️⃣ Run the Application
+
 mvn spring-boot:run
+
 The backend will start running on http://localhost:8080
