@@ -16,7 +16,12 @@ public class AppConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(Authorize -> Authorize.requestMatchers("/api/**").authenticated()
+                .authorizeHttpRequests(Authorize -> Authorize
+                        // Swagger UI endpoints
+                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
+                        // Protected API endpoints
+                        .requestMatchers("/api/**").authenticated()
+                        // Public endpoints
                         .anyRequest().permitAll())
                 .addFilterBefore(new JwtTokenValidator(), BasicAuthenticationFilter.class)
                 .csrf(csrf->csrf.disable())

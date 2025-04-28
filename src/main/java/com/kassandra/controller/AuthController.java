@@ -10,6 +10,13 @@ import com.kassandra.service.impl.EmailService;
 import com.kassandra.service.TwoFactorOtpService;
 import com.kassandra.service.WatchlistService;
 import com.kassandra.utils.OtpUtils;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +29,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
+@Tag(name = "Authentication", description = "Authentication API endpoints")
 public class AuthController {
 
     @Autowired
@@ -39,6 +47,12 @@ public class AuthController {
     @Autowired
     private WatchlistService watchlistService;
 
+    @Operation(summary = "Register a new user", description = "Creates a new user account")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "201", description = "User registered successfully",
+                content = @Content(mediaType = "application/json", schema = @Schema(implementation = AuthResponse.class))),
+        @ApiResponse(responseCode = "400", description = "Email already in use or invalid input")
+    })
     @PostMapping("/signup")
     public ResponseEntity<AuthResponse> register(@RequestBody User user) throws Exception {
         // Check if email is already in use
@@ -71,6 +85,13 @@ public class AuthController {
         return new ResponseEntity<>(res, HttpStatus.CREATED);
 
     }
+    @Operation(summary = "User login", description = "Authenticates a user and returns a JWT token")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Login successful",
+                content = @Content(mediaType = "application/json", schema = @Schema(implementation = AuthResponse.class))),
+        @ApiResponse(responseCode = "401", description = "Invalid credentials"),
+        @ApiResponse(responseCode = "400", description = "Invalid input")
+    })
     @PostMapping("/signin")
     public ResponseEntity<AuthResponse> login(@RequestBody User user) throws Exception {
 
@@ -125,9 +146,18 @@ public class AuthController {
         }
         return new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
     }
+   @Operation(summary = "Verify two-factor authentication OTP", description = "Verifies the OTP for two-factor authentication")
+   @ApiResponses(value = {
+       @ApiResponse(responseCode = "200", description = "OTP verified successfully",
+               content = @Content(mediaType = "application/json", schema = @Schema(implementation = AuthResponse.class))),
+       @ApiResponse(responseCode = "400", description = "Invalid OTP"),
+       @ApiResponse(responseCode = "404", description = "OTP session not found")
+   })
    @PostMapping("/two-factor/otp/{otp}")
     public ResponseEntity<AuthResponse> verifySignInOtp(
+            @Parameter(description = "OTP code", required = true)
             @PathVariable String otp,
+            @Parameter(description = "Two-factor authentication session ID", required = true)
             @RequestParam String id) throws Exception {
 
         TwoFactorOTP twoFactorOTP = twoFactorOtpService.findById(id);
