@@ -14,13 +14,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @OpenAPIDefinition(
         info = @Info(
-                title = "Kassandra Trading API",
+                title = "Cassandra Trading API",
                 version = "1.0",
-                description = "API documentation for Kassandra Trading Platform",
+                description = "API documentation for Cassandra Trading Platform",
                 contact = @Contact(
-                        name = "Kassandra Support",
+                        name = "Cassandra Support",
                         email = "support@kassandra.com",
-                        url = "https://kassandra.com"
+                        url = "https://cassandra.com"
                 ),
                 license = @License(
                         name = "Apache 2.0",
@@ -29,8 +29,12 @@ import org.springframework.context.annotation.Configuration;
         ),
         servers = {
                 @Server(
-                        url = "http://localhost:5454",
+                        url = "http://localhost:8000",
                         description = "Development Server"
+                ),
+                @Server(
+                        url = "https://kassandra-treading.up.railway.app",
+                        description = "Production Server"
                 )
         },
         security = {

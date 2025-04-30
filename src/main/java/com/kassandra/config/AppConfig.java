@@ -51,13 +51,18 @@ public class AppConfig {
                 "http://localhost:5178",
                 "http://localhost:5179",
                 "http://localhost:8080",
+                "http://localhost:5500",
                 "http://127.0.0.1:5173",
-                "http://127.0.0.1:5179"
+                "http://127.0.0.1:5179",
+                "http://127.0.0.1:5500",
+                // Продакшн домены
+                "https://kassandra-treading.up.railway.app",
+                "https://kassandra-treading-frontend.up.railway.app"
         ));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(Arrays.asList("authorization", "content-type", "x-auth-token"));
+        configuration.setAllowedHeaders(Arrays.asList("authorization", "content-type", "x-auth-token", "*"));
         configuration.setExposedHeaders(Collections.singletonList("x-auth-token"));
-        configuration.setAllowCredentials(true);
+        configuration.setAllowCredentials(true); // Теперь можно использовать setAllowCredentials(true)
         configuration.setMaxAge(3600L);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

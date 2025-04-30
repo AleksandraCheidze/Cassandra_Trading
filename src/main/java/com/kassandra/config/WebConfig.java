@@ -20,12 +20,17 @@ public class WebConfig implements WebMvcConfigurer {
                         "http://localhost:5178",
                         "http://localhost:5179",
                         "http://localhost:8080",
+                        "http://localhost:5500",
                         "http://127.0.0.1:5173",
-                        "http://127.0.0.1:5179"
+                        "http://127.0.0.1:5179",
+                        "http://127.0.0.1:5500",
+                        // Продакшн домены
+                        "https://kassandra-treading.up.railway.app",
+                        "https://kassandra-treading-frontend.up.railway.app"
                 )
                 .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
-                .allowCredentials(true)
+                .allowCredentials(true) // Теперь можно использовать allowCredentials(true)
                 .maxAge(3600);
     }
 }
