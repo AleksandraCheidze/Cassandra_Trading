@@ -26,7 +26,8 @@ public class WebConfig implements WebMvcConfigurer {
                         "http://127.0.0.1:5500",
                         // Продакшн домены
                         "https://cassandra-trading.up.railway.app",
-                        "https://cassandra-trading-frontend.up.railway.app"
+                        "https://cassandra-trading-frontend.up.railway.app",
+                        "https://cassandra-trading-1.onrender.com"
                 )
                 .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
                 .allowedHeaders("*")

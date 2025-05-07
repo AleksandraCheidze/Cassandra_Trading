@@ -138,8 +138,12 @@ public class PaymentServiceImpl implements PaymentService {
 
         // Настройка URL-ов возврата и отмены
         RedirectUrls redirectUrls = new RedirectUrls();
-        redirectUrls.setCancelUrl("http://localhost:5173/wallet/cancel");
-        redirectUrls.setReturnUrl("http://localhost:5173/wallet?order_id="+ orderId);
+        // Локальные URL для разработки
+        // redirectUrls.setCancelUrl("http://localhost:5173/wallet/cancel");
+        // redirectUrls.setReturnUrl("http://localhost:5173/wallet?order_id="+ orderId);
+        // Продакшн URL для Render
+        redirectUrls.setCancelUrl("https://cassandra-trading-1.onrender.com/wallet/cancel");
+        redirectUrls.setReturnUrl("https://cassandra-trading-1.onrender.com/wallet?order_id="+ orderId);
 
         Payment payment = new Payment();
         payment.setIntent("sale");
@@ -168,8 +172,12 @@ public class PaymentServiceImpl implements PaymentService {
         SessionCreateParams params = SessionCreateParams.builder()
                 .addPaymentMethodType(SessionCreateParams.PaymentMethodType.CARD)
                 .setMode(SessionCreateParams.Mode.PAYMENT)
-                .setSuccessUrl("http://localhost:5173/wallet?order_id="+orderId)
-                .setCancelUrl("http://localhost:5173/payment/cancel")
+                // Локальные URL для разработки
+                // .setSuccessUrl("http://localhost:5173/wallet?order_id="+orderId)
+                // .setCancelUrl("http://localhost:5173/payment/cancel")
+                // Продакшн URL для Render
+                .setSuccessUrl("https://cassandra-trading-1.onrender.com/wallet?order_id="+orderId)
+                .setCancelUrl("https://cassandra-trading-1.onrender.com/payment/cancel")
                 .addLineItem(SessionCreateParams.LineItem.builder()
                         .setQuantity(1L)
                         .setPriceData(SessionCreateParams.LineItem.PriceData.builder()

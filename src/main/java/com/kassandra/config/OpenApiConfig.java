@@ -34,7 +34,11 @@ import org.springframework.context.annotation.Configuration;
                 ),
                 @Server(
                         url = "https://kassandra-treading.up.railway.app",
-                        description = "Production Server"
+                        description = "Railway Production Server"
+                ),
+                @Server(
+                        url = "https://cassandra-trading-1.onrender.com",
+                        description = "Render Production Server"
                 )
         },
         security = {

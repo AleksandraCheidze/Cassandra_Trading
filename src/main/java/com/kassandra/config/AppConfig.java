@@ -57,7 +57,8 @@ public class AppConfig {
                 "http://127.0.0.1:5500",
                 // Продакшн домены
                 "https://kassandra-treading.up.railway.app",
-                "https://kassandra-treading-frontend.up.railway.app"
+                "https://kassandra-treading-frontend.up.railway.app",
+                "https://cassandra-trading-1.onrender.com"
         ));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("authorization", "content-type", "x-auth-token", "*"));
