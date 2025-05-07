@@ -1,0 +1,7 @@
+.git
+.github
+.gitignore
+target
+*.md
+!README.md
+!DEPLOY.md

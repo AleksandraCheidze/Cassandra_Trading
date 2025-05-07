@@ -1,5 +1,7 @@
 #!/bin/bash
 
-# Используем Maven напрямую
-echo "Сборка проекта с помощью Maven..."
-mvn clean package -DskipTests
+echo "Устанавливаем права на исполнение для mvnw"
+chmod +x mvnw
+
+echo "Сборка проекта с помощью Maven Wrapper..."
+./mvnw clean package -DskipTests
