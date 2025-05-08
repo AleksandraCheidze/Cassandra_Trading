@@ -8,6 +8,7 @@ import lombok.Data;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Entity
+@Table(name = "users") // Явно указываем имя таблицы, чтобы избежать конфликта с зарезервированным словом
 @Data
 public class User {
     @Id
