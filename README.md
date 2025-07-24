@@ -1,6 +1,6 @@
-# <img src="CassandraLogo.png" alt="Logo" width="100" /> Cassandra Trading – Crypto Trading Platform 
+# <img src="CassandraLogo.png" alt="Logo" width="100" /> Crypto Trading Platform 
 
-Cassandra Trading is a secure and efficient crypto trading platform that provides users with a powerful backend for managing digital assets, processing orders, and integrating payment solutions
+A secure and efficient crypto trading platform that provides users with a powerful backend for managing digital assets, processing orders, and integrating payment solutions
 ## 🛠 **Tech Stack**
 
 - **Language**: ![Java](https://img.shields.io/badge/Java-ED8B00?style=flat&logo=openjdk&logoColor=white)  
